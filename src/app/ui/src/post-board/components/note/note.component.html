@@ -12,7 +12,7 @@
     <div class="card-content">
         <div class="content overflow-ellipsis">
             <div *ngIf="!isNew">{{ note.content }}</div>
-            <div *ngIf="isNew"><button (click)="handleAddNewNote()">+ Add</button></div>
+            <div *ngIf="isNew"><button (click)="onAddNewNote()">+ Add</button></div>
         </div>
     </div>
 </div>

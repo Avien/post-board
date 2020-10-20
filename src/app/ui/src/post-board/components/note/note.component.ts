@@ -24,7 +24,10 @@ export class NoteComponent implements OnInit {
 
     ngOnInit(): void {}
 
-    handleAddNewNote(): void {
+    /**
+     * Event handler to notify parent about new note addition
+     */
+    onAddNewNote(): void {
         this.addNewNote.emit();
     }
 }

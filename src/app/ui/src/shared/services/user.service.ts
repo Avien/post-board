@@ -15,10 +15,17 @@ export class UserService {
         this.user$ = this.userSource.asObservable();
     }
 
+    /**
+     * Mocking a login api that probably going to get email & pwd and return a user if authenticated
+     * @param user to login with
+     */
     login(user: User): void {
         this.userSource.next(user);
     }
 
+    /**
+     * Mocking endpoint with current users list
+     */
     getUsers(): Observable<User[]> {
         return of(MOCK_USERS);
     }
