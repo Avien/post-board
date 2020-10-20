@@ -1,0 +1,69 @@
+<div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head" style="">
+            <p class="modal-card-title">
+                {{
+                    isNew
+                        ? 'Post a new note'
+                        : 'A note from ' + viewModel.author + ' ' + viewModel.id
+                }}
+            </p>
+            <button class="delete" (click)="onCancel()"></button>
+        </header>
+
+        <section class="modal-card-body">
+            <div class="card">
+                <div class="card-content">
+                    <form #noteForm="ngForm">
+                        <div class="field" *ngIf="isNew">
+                            <label class="label">Author Name</label>
+                            <div class="control">
+                                <input
+                                    type="text"
+                                    class="input"
+                                    required="true"
+                                    name="author"
+                                    [(ngModel)]="viewModel.author"
+                                />
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label class="label" *ngIf="isNew">What would you like to say?</label>
+                            <div class="control">
+                                <textarea
+                                    rows="8"
+                                    class="textarea"
+                                    required="true"
+                                    name="note-content"
+                                    [(ngModel)]="viewModel.content"
+                                ></textarea>
+                                <div></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <footer class="modal-card-foot">
+            <div class="field is-grouped">
+                <p class="control">
+                    <a class="button is-light" (click)="isNew ? onCancel() : onUpdateNote()">
+                        {{ isNew ? 'Cancel' : noteForm.dirty ? 'Close & Update' : 'Close' }}
+                    </a>
+                </p>
+
+                <p class="control">
+                    <a
+                        class="button is-primary"
+                        [class.disabled]="(noteForm.invalid || !noteForm.dirty) && isNew"
+                        (click)="isNew ? onUpdateNote() : onDeleteNote()"
+                        [attr.disabled]="(isNew && (noteForm.invalid || !noteForm.dirty)) || null"
+                    >
+                        {{ isNew ? 'Post' : 'Delete' }}
+                    </a>
+                </p>
+            </div>
+        </footer>
+    </div>
+</div>

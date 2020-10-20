@@ -1,0 +1,9 @@
+footer {
+    justify-content: flex-end;
+
+    .button {
+        &.disabled {
+            pointer-events: none;
+        }
+    }
+}

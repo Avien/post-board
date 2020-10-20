@@ -1,0 +1,19 @@
+<div *ngIf="facade.vm$ | async as vm" class="columns is-multiline">
+    <div class="column is-full">
+        <h1 class="title is-1 has-text-centered">Welcome to post board</h1>
+    </div>
+    <div class="column is-narrow">
+        <app-note [isNew]="true" (addNewNote)="openViewNoteModal(true)"></app-note>
+    </div>
+    <div class="column is-narrow" *ngFor="let note of vm.notes | sortByDate; trackBy: trackBy">
+        <app-note [note]="note" (click)="editNote(note)"></app-note>
+    </div>
+
+    <app-view-note-modal
+        *ngIf="showNoteModal"
+        [note]="selectedNote"
+        (updateNote)="onUpdateNote($event)"
+        (deleteNote)="onDeleteNote($event)"
+        (cancelModal)="closeNoteModal()"
+    ></app-view-note-modal>
+</div>

@@ -1,0 +1,21 @@
+.section {
+    padding: 1.5rem 1.5rem;
+}
+
+.card {
+    border: 1px solid;
+    width: 300px;
+    height: 300px;
+    max-width: 500px;
+    max-height: 300px;
+    cursor: pointer;
+}
+
+.overflow-ellipsis {
+    display: box;
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
