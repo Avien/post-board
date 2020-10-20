@@ -27,6 +27,7 @@ export class AuthorizationGuard implements CanActivate {
                     if ([RoleType.ADMIN, RoleType.ENABLEMENT].includes(user.role)) {
                         return true;
                     }
+                    // TODO: pop toaster with error or redirect to a nice error page
                     const errorMsg = 'Unauthorized user';
                     console.error(errorMsg);
                     alert(errorMsg);
