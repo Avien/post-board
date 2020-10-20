@@ -33,9 +33,9 @@ export class ViewNoteModalComponent implements OnInit {
         }
     }
 
-    @Output() updateNote: EventEmitter<Note> = new EventEmitter<Note>();
-    @Output() deleteNote: EventEmitter<Note> = new EventEmitter<Note>();
-    @Output() cancelModal: EventEmitter<void> = new EventEmitter<void>();
+    @Output() updateNote: EventEmitter<Note> = new EventEmitter<Note>(); // notify parent on update note
+    @Output() deleteNote: EventEmitter<Note> = new EventEmitter<Note>(); // notify parent on delete note
+    @Output() cancelModal: EventEmitter<void> = new EventEmitter<void>(); // notify parent on modal close
 
     @ViewChild('noteForm') noteForm: NgForm;
 
@@ -46,22 +46,34 @@ export class ViewNoteModalComponent implements OnInit {
 
     ngOnInit(): void {}
 
+    /**
+     * Event handler for adding/updating a note
+     */
     onUpdateNote(): void {
         if (this.isNew) {
+            // only new notes are set with creation date
             this.viewModel.date = new Date().toISOString();
         }
 
         if (this.noteForm.dirty) {
+            // update change in note
             this.updateNote.emit(this.viewModel);
         } else {
+            // no change to note, close modal
             this.onCancel();
         }
     }
 
+    /**
+     * Event handler for deleting a note
+     */
     onDeleteNote(): void {
         this.deleteNote.emit(this.viewModel);
     }
 
+    /**
+     * Event handler for dismissing the modal
+     */
     onCancel(): void {
         this.cancelModal.emit();
     }

@@ -19,11 +19,12 @@ export class NoteComponent implements OnInit {
     @Input() isNew: boolean;
 
     @Output() addNewNote: EventEmitter<void> = new EventEmitter<void>();
+
     constructor() {}
 
     ngOnInit(): void {}
 
-    handleAddNewNote() {
+    handleAddNewNote(): void {
         this.addNewNote.emit();
     }
 }

@@ -22,6 +22,9 @@ export class NotesFacade {
         this.vm$ = makePostBoardViewModel([this.notes$]);
     }
 
+    /**
+     * Load notes from store if exists, if not fetch fro, data service (backend or mock notes in this case)
+     */
     loadNotes(): void {
         if (this.query.hasEntity()) {
             this.store.setActive(this.store.getValue().ids);
@@ -42,14 +45,26 @@ export class NotesFacade {
         }
     }
 
+    /**
+     * Add new note
+     * @param note
+     */
     addNote(note: Note): void {
         this.store.addNotes([note]);
     }
 
+    /**
+     * update note
+     * @param note
+     */
     updateNote(note: Note): void {
         this.store.updateNote(note);
     }
 
+    /**
+     * delete note
+     * @param note
+     */
     deleteNote(note: Note): void {
         this.store.deleteNote(note);
     }

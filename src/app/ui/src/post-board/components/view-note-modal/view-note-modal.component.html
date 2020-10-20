@@ -3,11 +3,7 @@
     <div class="modal-card">
         <header class="modal-card-head" style="">
             <p class="modal-card-title">
-                {{
-                    isNew
-                        ? 'Post a new note'
-                        : 'A note from ' + viewModel.author + ' ' + viewModel.id
-                }}
+                {{ isNew ? 'Post a new note' : 'A note from ' + viewModel.author }}
             </p>
             <button class="delete" (click)="onCancel()"></button>
         </header>

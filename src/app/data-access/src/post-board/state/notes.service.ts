@@ -7,6 +7,9 @@ import { MOCK_NOTES } from '../mocks/mock-notes';
 export class NotesService {
     constructor() {}
 
+    /**
+     * load initial notes from mock file, should be replaced with endpoint on real app
+     */
     loadNotes(): Observable<Note[]> {
         return of(MOCK_NOTES);
     }

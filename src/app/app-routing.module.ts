@@ -7,6 +7,7 @@ const routes: Routes = [
     {
         path: '',
         loadChildren: () =>
+            // lazy load route
             import('./ui/src/post-board/post-board.module').then((m) => m.PostBoardModule),
         canActivate: [AuthorizationGuard],
     },
