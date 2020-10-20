@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-
 import { produce } from 'immer';
 import { transaction, MultiActiveState } from '@datorama/akita';
 import { EntityState, EntityStore, StoreConfig } from '@datorama/akita';
-
 import { Note } from '../models/note';
 
 export interface NotesState extends EntityState<Note, number>, MultiActiveState {}

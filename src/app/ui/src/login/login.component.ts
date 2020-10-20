@@ -3,7 +3,7 @@ import { UserService } from '../shared/services/user.service';
 import { Observable } from 'rxjs';
 import { User } from '../../../data-access/src/post-board/models/user';
 import { MOCK_USERS } from '../../../data-access/src/post-board/mocks/mock-users';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-login',

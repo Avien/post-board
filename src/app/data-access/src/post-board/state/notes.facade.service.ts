@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { Note } from '../models/note';
 import { filter, map, take, tap } from 'rxjs/operators';
@@ -13,13 +12,18 @@ export class NotesFacade {
     readonly notes$: Observable<Note[]> = this.query.notes$;
 
     vm$: Observable<PostBoardVideModel>;
+    private notes: Note[];
 
     constructor(
         private service: NotesService,
         private query: NotesQuery,
         private store: NotesStore,
     ) {
-        this.vm$ = makePostBoardViewModel([this.notes$]);
+        this.vm$ = makePostBoardViewModel([this.notes$]).pipe(
+            tap((vm) => {
+                this.notes = vm.notes;
+            }),
+        );
     }
 
     /**
@@ -32,6 +36,7 @@ export class NotesFacade {
             const notes$ = this.service.loadNotes();
             const updateStore = (notes: Note[]) => {
                 if (notes.length) {
+                    this.notes = notes;
                     this.store.addNotes(notes);
                 }
             };
@@ -50,6 +55,7 @@ export class NotesFacade {
      * @param note
      */
     addNote(note: Note): void {
+        note.id = this.notes.length + 1;
         this.store.addNotes([note]);
     }
 
