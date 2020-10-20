@@ -3,16 +3,18 @@
         <p class="card-header-title">
             {{ isNew ? 'Add new note...' : note.author }}
         </p>
-        <a href="#" class="card-header-icon" aria-label="more options">
+        <a href="#" class="card-header-icon">
             <span class="icon">
-                <i class="fas fa-angle-down" aria-hidden="true"></i>
+                <i class="fas fa-angle-down"></i>
             </span>
         </a>
     </header>
     <div class="card-content">
-        <div class="content overflow-ellipsis">
+        <div class="content overflow-ellipsis has-text-centered">
             <div *ngIf="!isNew">{{ note.content }}</div>
-            <div *ngIf="isNew"><button (click)="onAddNewNote()">+ Add</button></div>
+            <div *ngIf="isNew">
+                <a class="button is-primary add" (click)="onAddNewNote()">Add </a>
+            </div>
         </div>
     </div>
 </div>

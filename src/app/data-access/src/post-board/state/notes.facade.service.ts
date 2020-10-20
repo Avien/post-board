@@ -23,7 +23,7 @@ export class NotesFacade {
     }
 
     /**
-     * Load notes from store if exists, if not fetch fro, data service (backend or mock notes in this case)
+     * Load notes from store if exists, if not fetch from data service (backend or mocked notes in this case)
      */
     loadNotes(): void {
         if (this.query.hasEntity()) {
